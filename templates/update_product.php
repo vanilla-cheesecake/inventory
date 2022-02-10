@@ -27,12 +27,12 @@
                             
                         </select>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Brand</label>
                         <select class="form-control" id="select_brand" name="select_brand" required="">
                             
                         </select>                    
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label>Product Price</label>
                         <input type="text" class="form-control" name="product_price" id="product_price" placeholder="Enter price" required="">              
@@ -46,8 +46,8 @@
                         <label>Status</label>
                         <select class="form-control" id="updt_stat" name="updt_stat">
 					      	<option value="">~~SELECT~~</option>
-					      	<option value="1">Available</option>
-					      	<option value="0">Not Available</option>
+					      	<option value="1">FAST MOVING</option>
+					      	<option value="0">NOT FAST MOVING</option>
 					      </select>
 <!--                        <input type="number" class="form-control" name="updt_stat" id="updt_stat"  required="">              -->
                    <small id="updt_stat_error" class="form-text text-muted"></small>

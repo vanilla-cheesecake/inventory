@@ -57,14 +57,13 @@ if(isset($_GET['delpr'])){
             <table class="table table-striped table-bordered table-condensed table-hover text-center" id="example">
              <thead>
                  <tr style="background-color: rgb(0,113,122);" class="badge-info text-center">
-                     <td><b>SL#</b></td>
+                     <td><b>Item #</b></td>
                      <td><b>Product</b></td>
                      <td><b>Category</b></td>
-                     <td><b>Brand</b></td>
+                     <!-- <td><b>Brand</b></td> -->
                      <td><b>Price</b></td>
                      <td><b>Quantity</b></td>  
                      <td><b>Date</b></td>
-
               <!--  <td><b>Category</b></td>     -->                 
                      <td><b>Status</b></td>
                      <td><b>Action</b></td>
@@ -78,14 +77,14 @@ if(isset($_GET['delpr'])){
              $i++;
              ?>
             <tr class="delete_pro<?php echo $result['pId']; ?>">
-                <td><?php echo $i;?></td>
+                <td><?php echo $result['pId']; ?></td>
                 <td><?php echo $result['product_name']; ?></td>
                 <td><?php echo $result['category_name']; ?></td>
-                <td><?php echo $result['brand_name']; ?></td>
+                <!-- <td><? //php echo $result['brand_name']; ?></td> -->
                 <td><?php echo $result['product_price']; ?></td>
                 <td><?php echo $result['product_stock']; ?></td>
                 <td><?php echo $result['date']; ?></td>
-                
+                <!-- SET STATUS HERE KUNG FAST MOVING OR NOT ANG ITEMMS -->
                 <td>
                     <?php if($result['status']==0) {?>
                     <a href="#" class="badge badge-danger">Non available</a>
@@ -94,17 +93,16 @@ if(isset($_GET['delpr'])){
                     <?php } ?>
                 </td>
                 <td>
-<!--                    <a href="#" class="btn btn-danger" id="<?php echo $result['pId']; ?>">Delete</a>-->
-
-                    <a href="#" did="<?php echo $result['pId']; ?>" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash">&nbsp;</i>Delete</a>
-                    <a href="#" data-toggle="modal" data-target="#update_product" eid="<?php echo $result['pId']; ?>" class="btn btn-outline-warning btn-sm edit_pr"><i class="fa fa-edit">&nbsp;</i>Edit</a> 
+<!-- <a href="#" class="btn btn-danger" id="<?php // echo $result['pId']; ?>">Delete</a>-->
+                <!-- ACTIONS DITO EDIT OR DELETE ANG PRODUCT -->
+                <a href="#" did="<?php echo $result['pId']; ?>" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash">&nbsp;</i>Delete</a>
+                <a href="#" data-toggle="modal" data-target="#update_product" eid="<?php echo $result['pId']; ?>" class="btn btn-outline-warning btn-sm edit_pr"><i class="fa fa-edit">&nbsp;</i>Edit</a> 
                 </td>                                      
             </tr>
              <?php }} ?>
              </tbody>
              <tfoot>
                  <tr style="background-color: rgb(0,113,122);" class="badge-info text-center">
-                     <td></td>
                      <td></td>
                      <td></td>
                      <td></td>   

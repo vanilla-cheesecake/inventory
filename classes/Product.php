@@ -36,7 +36,7 @@ class Product {
 
         }else{
     // $query = "INSERT INTO product(cId,bId,product_name,product_price,product_stock,date,status) VALUES('$catId','$brId','$product_name','$price','$qty','$date','$status')";      
-      $query = "INSERT INTO product(cId, product_name,product_price,product_stock,date,status) VALUES('$catId','$product_name','$price','$qty','$date','$status')";
+      $query = "INSERT INTO product(cId,product_name,product_price,product_stock,date,status) VALUES('$catId','$product_name','$price','$qty','$date','$status')";
           $result = $this->db->insert($query);
             if($result){
                 return "Product_Added";
@@ -47,18 +47,17 @@ class Product {
     }
     // QUERY LAHAT NG PRODUCT SA DATABASE PARA MA DISPLAY SA INVENTORY PAGE
     public function getAllProduct(){
-           $query = "SELECT p.*,c.category_name,b.brand_name
-                     FROM product as p,category as b
-                     WHERE p.cId = c.catId AND p.bId = b.bId
-                     ORDER BY p.pId DESC";
+// $query = "SELECT p.*,c.category_name,b.brand_name 
+//     FROM product as p,category as c,brand as b
+//     WHERE p.cId = c.catId AND p.bId = b.bId 
+//     ORDER BY p.pId DESC";
+//     $result = $this->db->select($query);
+        $query = "SELECT p.*, c.category_name
+        FROM product as p, category as c
+        WHERE p.cId = c.catId
+        ORDER BY pId DESC";
         $result = $this->db->select($query);
-//         $query = "SELECT p.*,c.category_name 
-//         FROM product as p,category as b 
-//         WHERE p.cId = c.catId 
-//         AND p.bId = b.bId 
-//         ORDER BY p.pId DESC";
-// $result = $this->db->select($query);
-//         return $result; 
+        return $result; 
     }
     // DELETE PRODUCT
     public function deleteProduct($delpr) {
@@ -85,7 +84,7 @@ class Product {
        return $result; 
     }
     // UPDATE PRODUCT
-    public function updateProduct($pId,$cId,$bId,$product_name,$product_price,$product_qty,$date,$status){
+    public function updateProduct($pId,$cId,$product_name,$product_price,$product_qty,$date,$status){
        $pId = $this->fm->validation($pId); /// validation
        $cId = $this->fm->validation($cId); /// validation
     //    $bId = $this->fm->validation($bId); /// validation
@@ -109,7 +108,6 @@ class Product {
         $query = "UPDATE product
                   SET
                   cId = '$cId',
-                --   bId = '$bId',
                   product_name = '$product_name',
                   product_price = '$product_price',
                   product_stock = '$product_qty',
