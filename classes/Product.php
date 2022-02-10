@@ -13,16 +13,16 @@ class Product {
       
     }
     
-    public function addProduct($catId,$brId,$product_name,$price,$qty,$date){
+    public function addProduct($catId,$product_name,$price,$qty,$date){
       $catId     = $this->fm->validation($catId);    // validation
-      $brId     = $this->fm->validation($brId);    // validation
+    //   $brId     = $this->fm->validation($brId);    // validation
       $product_name     = $this->fm->validation($product_name);    // validation
       $price     = $this->fm->validation($price);    // validation
       $qty     = $this->fm->validation($qty);    // validation
       $date     = $this->fm->validation($date);    // validation
       
       $catId     = mysqli_real_escape_string($this->db->link, $catId);
-      $brId     = mysqli_real_escape_string($this->db->link, $brId);
+    //   $brId     = mysqli_real_escape_string($this->db->link, $brId);
       $product_name     = mysqli_real_escape_string($this->db->link, $product_name);
       $price     = mysqli_real_escape_string($this->db->link, $price);
       $qty     = mysqli_real_escape_string($this->db->link, $qty);
@@ -35,7 +35,8 @@ class Product {
              return "Product_Exist";
 
         }else{
-      $query = "INSERT INTO product(cId,bId,product_name,product_price,product_stock,date,status) VALUES('$catId','$brId','$product_name','$price','$qty','$date','$status')";
+    // $query = "INSERT INTO product(cId,bId,product_name,product_price,product_stock,date,status) VALUES('$catId','$brId','$product_name','$price','$qty','$date','$status')";      
+      $query = "INSERT INTO product(cId, product_name,product_price,product_stock,date,status) VALUES('$catId','$product_name','$price','$qty','$date','$status')";
           $result = $this->db->insert($query);
             if($result){
                 return "Product_Added";
@@ -44,28 +45,22 @@ class Product {
             }      
         }
     }
-     
+    // QUERY LAHAT NG PRODUCT SA DATABASE PARA MA DISPLAY SA INVENTORY PAGE
     public function getAllProduct(){
            $query = "SELECT p.*,c.category_name,b.brand_name
-                     FROM product as p,category as c,brand as b
+                     FROM product as p,category as b
                      WHERE p.cId = c.catId AND p.bId = b.bId
                      ORDER BY p.pId DESC";
         $result = $this->db->select($query);
-        return $result; 
+//         $query = "SELECT p.*,c.category_name 
+//         FROM product as p,category as b 
+//         WHERE p.cId = c.catId 
+//         AND p.bId = b.bId 
+//         ORDER BY p.pId DESC";
+// $result = $this->db->select($query);
+//         return $result; 
     }
-
-// FOR SEARCH FUNCTION IN NEW ORDER 
-    public function searchProduct(){
-        $query = "SELECT p.*,c.category_name,b.brand_name
-                  FROM product as p,category as c,brand as b
-                  WHERE p.cId = c.catId AND p.bId = b.bId
-                  ORDER BY p.pId DESC";
-     $result = $this->db->select($query);
-     return $result; 
- }
-//////////////////////////////////////
-   
-    
+    // DELETE PRODUCT
     public function deleteProduct($delpr) {
         $delpr = $this->fm->validation($delpr); /// validation
 
@@ -83,17 +78,17 @@ class Product {
             //return $msg;
           }
     }
-    
+    // GET PRODUCT
     public function getProduct($pId){
        $query = "SELECT * FROM product WHERE pId = '$pId'";
        $result = $this->db->select($query)->fetch_assoc(); // single array
        return $result; 
     }
-    
+    // UPDATE PRODUCT
     public function updateProduct($pId,$cId,$bId,$product_name,$product_price,$product_qty,$date,$status){
        $pId = $this->fm->validation($pId); /// validation
        $cId = $this->fm->validation($cId); /// validation
-       $bId = $this->fm->validation($bId); /// validation
+    //    $bId = $this->fm->validation($bId); /// validation
        $product_name = $this->fm->validation($product_name); /// validation
        $product_price = $this->fm->validation($product_price); /// validation
        $product_qty = $this->fm->validation($product_qty); /// validation
@@ -103,7 +98,7 @@ class Product {
        
        $pId = mysqli_real_escape_string($this->db->link, $pId);
        $cId = mysqli_real_escape_string($this->db->link, $cId);
-       $bId = mysqli_real_escape_string($this->db->link, $bId);
+    //    $bId = mysqli_real_escape_string($this->db->link, $bId);
        $product_name = mysqli_real_escape_string($this->db->link, $product_name);
        $product_price = mysqli_real_escape_string($this->db->link, $product_price);
        $product_qty = mysqli_real_escape_string($this->db->link, $product_qty);
@@ -114,7 +109,7 @@ class Product {
         $query = "UPDATE product
                   SET
                   cId = '$cId',
-                  bId = '$bId',
+                --   bId = '$bId',
                   product_name = '$product_name',
                   product_price = '$product_price',
                   product_stock = '$product_qty',
@@ -130,14 +125,13 @@ class Product {
         }
 
     }
-    
-    // used in order page 
+    // QUERY PARA SA ORDER PAGE (POS) 
     public function getAllActiveProduct() {
         $query = "SELECT * FROM product WHERE product_stock>0 AND status=1 ORDER BY pId DESC";
         $result = $this->db->select($query);
         return $result; 
     }
-    
+    // ORDER RECEIPT HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
    public function storeOrderInvoice($order_date,$cust_name,$ar_tqty,$ar_qty,$ar_price,$ar_pro_name,$ar_pro_id,$sub_total,$gst,$discount,$net_total,$paid,$due,$payment_type){
      /*
       
@@ -242,47 +236,37 @@ class Product {
         }
      }
    }
-   
-   
    public function getAllOrders() {
         $query = "SELECT * FROM invoice";
         $result = $this->db->select($query);
         return $result; 
    }
-   // for low products used in dashboard
+   // CHECK FOR LOW STOCKS TO BE TRANSFERED TO PURCHASE ORDER PARA MA REPLENISH ANG STOCKS
    public function getProductStocks(){
         $query = "SELECT * FROM product WHERE product_stock<=3 AND status=1";
         $result = $this->db->select($query);
         return $result; 
    }
-   
-   // fetch invoice of all customers 
-   
+   // FETCH ORDER OR INVOICE DETAILS NG LAHAT NG COSTUMER
    public function getCustomerOrderDetails(){
         $query = "SELECT * FROM invoice ORDER BY invoice_no DESC";
         $result = $this->db->select($query);
         return $result;  
    }
-   
    // fetch invoice of each customer by their ID
-   
    public function getOrder($invoice_no){
-      
        $query = "SELECT * FROM invoice WHERE invoice_no = '$invoice_no'";
        $result = $this->db->select($query)->fetch_assoc();
        return $result; 
     
    }
-   
    // fetch invoice details of each customer
-   
    public function getInvoiceDetails($invoice_no){
        $query = "SELECT * FROM invoice_details WHERE invoice_no = '$invoice_no'";
        $result = $this->db->select($query);
        return $result;        
    }
-   
-   
+   // UPDATE ORDER RECEIPT SOMETHING SOMETHING
    public function UpdateOrderInvoice($invoice,$order_date,$cust_name,$ar_tqty,$ar_qty,$ar_price,$ar_pro_name,$ar_pro_id,$sub_total,$gst,$discount,$net_total,$paid,$due,$payment_type){    
        if($cust_name==""||$paid==""||$payment_type==""){
            return "missing";

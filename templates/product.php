@@ -26,12 +26,12 @@
                                
                      </select>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Brand</label>
                         <select class="form-control" id="select_brand" name="select_brand" required="">
                             
                         </select>                    
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label>Product Price</label>
                         <input type="text" class="form-control" name="product_price" id="product_price" placeholder="Enter price" required="">              

@@ -62,7 +62,7 @@ if(isset($_GET['delpr'])){
                      <td><b>Category</b></td>
                      <td><b>Brand</b></td>
                      <td><b>Price</b></td>
-                     <td><b>Stock</b></td>  
+                     <td><b>Quantity</b></td>  
                      <td><b>Date</b></td>
 
               <!--  <td><b>Category</b></td>     -->                 

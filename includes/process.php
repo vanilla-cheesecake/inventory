@@ -8,17 +8,14 @@ $br = new Brand();
 $pr = new Product();
 
 if(isset($_POST['category_name'])){
-
     $category_name = $_POST['category_name'];
     $result = $cat->addCategory($category_name);
     echo $result;
     exit();
 }
 if(isset($_POST['brand_name'])){
-    
     $brand_name = $_POST['brand_name'];
     $catId = $_POST['select_cat'];
-
     $result = $br->addBrand($brand_name);
     echo $result;
     exit();    
@@ -46,10 +43,10 @@ if(isset($_POST['added_date']) AND isset($_POST['product_name'])){
     $date = $_POST['added_date'];
     $product_name = $_POST['product_name'];
     $catId = $_POST['select_cat'];
-    $brId = $_POST['select_brand'];
+    // $brId = $_POST['select_brand'];
     $price = $_POST['product_price'];
     $qty = $_POST['product_qty'];
-    $result = $pr->addProduct($catId,$brId,$product_name,$price,$qty,$date);
+    $result = $pr->addProduct($catId,/*$brId,*/$product_name,$price,$qty,$date);
     echo $result;
     exit();
     
@@ -146,10 +143,9 @@ if(isset($_POST['updateBrand']) AND isset($_POST['id'])){
     
 }
 // update record after getting data
-
 if(isset($_POST['updt_br'])){
     $bId = $_POST['brId'];
-    $brand_name = $_POST['updt_br'];
+    // $brand_name = $_POST['updt_br'];
     $result = $br->updtBrand($brand_name,$bId);
     echo $result;
     exit();
@@ -230,13 +226,10 @@ if(isset($_POST['getPriceAndQty']) AND isset($_POST['id'])){
 }
     
 // Request from order.js for order information
-
 if(isset($_POST['order_date']) AND isset($_POST['cust_name'])){
    $order_date   = $_POST['order_date'];
    $cust_name    = $_POST['cust_name'];
-   
    //Now getting Array from order from
-   
    $ar_tqty      = $_POST['tqty'];
    $ar_qty       = $_POST['qty'];
    $ar_price     = $_POST['price'];

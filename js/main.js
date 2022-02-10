@@ -131,7 +131,7 @@
               alert("Product Added Successfully");
               $("#product_name").val("");
               $("#select_cat").val("");
-              $("#select_brand").val("");
+              // $("#select_brand").val("");
               $("#product_price").val("");
               $("#product_qty").val("");
               
@@ -139,7 +139,7 @@
             $("#pd_error").html("<span class='text-danger'>Already Same Product Exist,Try Another</span>");
               $("#product_name").val("");
               $("#select_cat").val("");
-              $("#select_brand").val("");
+              // $("#select_brand").val("");
               $("#product_price").val("");
               $("#product_qty").val("");
             }
