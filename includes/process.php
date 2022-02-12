@@ -44,9 +44,10 @@ if(isset($_POST['added_date']) AND isset($_POST['product_name'])){
     $product_name = $_POST['product_name'];
     $catId = $_POST['select_cat'];
     // $brId = $_POST['select_brand'];
+    $retail_price = $_POST['retail_price'];
     $price = $_POST['product_price'];
     $qty = $_POST['product_qty'];
-    $result = $pr->addProduct($catId,/*$brId,*/$product_name,$price,$qty,$date);
+    $result = $pr->addProduct($catId,/*$brId,*/$product_name,$retail_price,$price,$qty,$date);
     echo $result;
     exit();
     
@@ -168,11 +169,12 @@ if(isset($_POST['updt_pr'])){
    $cId = $_POST['select_cat'];
 //    $bId = $_POST['select_brand'];
    $product_name = $_POST['updt_pr'];
+   $retail_price = $_POST['retail_price'];
    $product_price = $_POST['product_price'];
    $product_qty = $_POST['product_qty'];
    $date = $_POST['added_date'];
    $status =$_POST['updt_stat'];
-   $result = $pr->updateProduct($pId,$cId,/*$bId*/$product_name,$product_price,$product_qty,$date,$status);
+   $result = $pr->updateProduct($pId,$cId,/*$bId*/$product_name,$retail_price,$product_price,$product_qty,$date,$status);
    echo $result;
    exit();
 }

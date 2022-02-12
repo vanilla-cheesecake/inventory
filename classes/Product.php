@@ -13,10 +13,11 @@ class Product {
       
     }
     
-    public function addProduct($catId,$product_name,$price,$qty,$date){
+    public function addProduct($catId,$product_name,$retail_price,$price,$qty,$date){
       $catId     = $this->fm->validation($catId);    // validation
     //   $brId     = $this->fm->validation($brId);    // validation
       $product_name     = $this->fm->validation($product_name);    // validation
+      $retail_price = $this->fm->validation($retail_price); // validation
       $price     = $this->fm->validation($price);    // validation
       $qty     = $this->fm->validation($qty);    // validation
       $date     = $this->fm->validation($date);    // validation
@@ -24,6 +25,7 @@ class Product {
       $catId     = mysqli_real_escape_string($this->db->link, $catId);
     //   $brId     = mysqli_real_escape_string($this->db->link, $brId);
       $product_name     = mysqli_real_escape_string($this->db->link, $product_name);
+      $retail_price = mysqli_real_escape_string($this->db->link, $retail_price);
       $price     = mysqli_real_escape_string($this->db->link, $price);
       $qty     = mysqli_real_escape_string($this->db->link, $qty);
       $date     = mysqli_real_escape_string($this->db->link, $date);
@@ -36,7 +38,7 @@ class Product {
 
         }else{
     // $query = "INSERT INTO product(cId,bId,product_name,product_price,product_stock,date,status) VALUES('$catId','$brId','$product_name','$price','$qty','$date','$status')";      
-      $query = "INSERT INTO product(cId,product_name,product_price,product_stock,date,status) VALUES('$catId','$product_name','$price','$qty','$date','$status')";
+      $query = "INSERT INTO product(cId,product_name, retail_price, product_price,product_stock,date,status) VALUES('$catId','$product_name','$retail_price','$price','$qty','$date','$status')";
           $result = $this->db->insert($query);
             if($result){
                 return "Product_Added";

@@ -46,8 +46,8 @@
                         <label>Status</label>
                         <select class="form-control" id="updt_stat" name="updt_stat">
 					      	<option value="">~~SELECT~~</option>
-					      	<option value="1">FAST MOVING</option>
-					      	<option value="0">NOT FAST MOVING</option>
+					      	<option value="1">---</option>
+					      	<option value="0">Fast Moving</option>
 					      </select>
 <!--                        <input type="number" class="form-control" name="updt_stat" id="updt_stat"  required="">              -->
                    <small id="updt_stat_error" class="form-text text-muted"></small>

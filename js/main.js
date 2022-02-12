@@ -120,7 +120,7 @@
         })   
       }  
     })
-    // I-ADD ANG PRODUCT SA DATABASE
+    // JS, I-ADD ANG PRODUCT SA DATABASE
     $("#product_form").on("submit",function(){
         $.ajax({
             url : "includes/process.php",
@@ -129,17 +129,21 @@
         success : function(data){
             if(data=="Product_Added"){
               alert("Product Added Successfully");
+
               $("#product_name").val("");
               $("#select_cat").val("");
               // $("#select_brand").val("");
+              $("#retail_price").val("");
               $("#product_price").val("");
               $("#product_qty").val("");
+
               
             }else if(data=="Product_Exist"){
             $("#pd_error").html("<span class='text-danger'>Already Same Product Exist,Try Another</span>");
               $("#product_name").val("");
               $("#select_cat").val("");
               // $("#select_brand").val("");
+              $("#retail_price").val("");
               $("#product_price").val("");
               $("#product_qty").val("");
             }

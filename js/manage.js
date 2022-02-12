@@ -190,7 +190,7 @@ $(document).ready(function(){
     $.ajax({
           url:"includes/process.php",
        method:"POST",
-     dataType:"json",
+     dataType:"json", 
          data:{updateProduct:1,id:eid},
       success:function(data){
         console.log(data);
@@ -198,7 +198,8 @@ $(document).ready(function(){
         $("#added_date").val(data["date"]);
         $("#updt_pr").val(data["product_name"]);         
         $("#select_cat").val(data["cId"]);         
-        $("#select_brand").val(data["bId"]);         
+        // $("#select_brand").val(data["bId"]);    
+        $("#retail_price").val(data["retail_price"]);        
         $("#product_price").val(data["product_price"]);         
         $("#product_qty").val(data["product_stock"]);    
         $("#updt_stat").val(data["status"]);    
