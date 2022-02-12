@@ -163,7 +163,7 @@ if(!isset($_SESSION['userlogin'])){
                         <div class="card-body">
                             <h5 class="card-title">INVENTORY</h5>
                             <p class="card-text">Here you can manage your products and add new products</p>
-                            <a href="#" data-toggle="modal" data-target="#form_product" class="btn btn-outline-primary">Add</a>
+                            <!-- <a href="#" data-toggle="modal" data-target="#form_product" class="btn btn-outline-primary">Add</a> -->
                             <a href="manage_products.php" class="btn btn-outline-success">Manage</a>
                         </div>
                     </div>
