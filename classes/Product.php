@@ -86,11 +86,11 @@ class Product {
        return $result; 
     }
     // UPDATE PRODUCT
-    public function updateProduct($pId,$cId,$product_name,$product_price,$product_qty,$date,$status){
+    public function updateProduct($pId,$cId,$product_name,$retail_price,$product_price,$product_qty,$date,$status){
        $pId = $this->fm->validation($pId); /// validation
        $cId = $this->fm->validation($cId); /// validation
-    //    $bId = $this->fm->validation($bId); /// validation
        $product_name = $this->fm->validation($product_name); /// validation
+       $retail_price = $this->fm->validation($retail_price); /// validation
        $product_price = $this->fm->validation($product_price); /// validation
        $product_qty = $this->fm->validation($product_qty); /// validation
        $date = $this->fm->validation($date); /// validation
@@ -99,8 +99,8 @@ class Product {
        
        $pId = mysqli_real_escape_string($this->db->link, $pId);
        $cId = mysqli_real_escape_string($this->db->link, $cId);
-    //    $bId = mysqli_real_escape_string($this->db->link, $bId);
        $product_name = mysqli_real_escape_string($this->db->link, $product_name);
+       $retail_price = mysqli_real_escape_string($this->db->link, $retail_price);
        $product_price = mysqli_real_escape_string($this->db->link, $product_price);
        $product_qty = mysqli_real_escape_string($this->db->link, $product_qty);
        $date = mysqli_real_escape_string($this->db->link, $date);
@@ -111,6 +111,7 @@ class Product {
                   SET
                   cId = '$cId',
                   product_name = '$product_name',
+                  retail_price = '$retail_price',
                   product_price = '$product_price',
                   product_stock = '$product_qty',
                   date = '$date',

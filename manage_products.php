@@ -25,7 +25,7 @@ if(isset($_GET['delpr'])){
     // form_product
     include_once ("templates/product.php");?>
     
-?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -162,15 +162,7 @@ if(isset($_GET['delpr'])){
                  $('#example').DataTable();
            });
           </script>
-                    <?php
-         // form_category
-         include_once ("templates/category.php");?>
-         <?php
-         // form_brand
-         include_once ("templates/brand.php");?>
-         <?php
-         // form_product
-         include_once ("templates/product.php");?>
+   
      </body>
 </html>
 <?php }?>

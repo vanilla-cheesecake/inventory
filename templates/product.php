@@ -45,6 +45,7 @@
                         <input type="text" class="form-control" name="product_qty" id="product_qty" placeholder="Enter quantity" required="">              
                     </div>
                     <div class="form-group">
+                    
                     <small id="pd_error" class="form-text text-muted"></small>
                     </div>
                     <button type="submit" class="btn btn-success">Add Product</button>

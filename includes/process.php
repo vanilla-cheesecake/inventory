@@ -13,13 +13,6 @@ if(isset($_POST['category_name'])){
     echo $result;
     exit();
 }
-// if(isset($_POST['brand_name'])){
-//     $brand_name = $_POST['brand_name'];
-//     $catId = $_POST['select_cat'];
-//     $result = $br->addBrand($brand_name);
-//     echo $result;
-//     exit();    
-// }
 // EDIT PRODUCT BRAND AND CATEGORY SHOW OPTION
 if(isset($_POST['getCategory'])){
     $result = $cat->getAllCategory();
@@ -30,53 +23,26 @@ if(isset($_POST['getCategory'])){
  
  }
 
-//  if(isset($_POST['getBrand'])){
-//     $result = $br->getAllBrand();
-//     foreach($result as $row) {
-//         echo "<option value='" .$row["bId"]."'>".$row["brand_name"]."</option>";
-//     }
-//     exit();
-//  }
-////////
+
 
 if(isset($_POST['added_date']) AND isset($_POST['product_name'])){
     $date = $_POST['added_date'];
     $product_name = $_POST['product_name'];
     $catId = $_POST['select_cat'];
-    // $brId = $_POST['select_brand'];
     $retail_price = $_POST['retail_price'];
     $price = $_POST['product_price'];
     $qty = $_POST['product_qty'];
-    $result = $pr->addProduct($catId,/*$brId,*/$product_name,$retail_price,$price,$qty,$date);
+    $result = $pr->addProduct(  $catId,
+                                $product_name,
+                                $retail_price,
+                                $price,
+                                $qty,
+                                $date );
     echo $result;
     exit();
     
 }
 //-------- request receive from manage.js for displaying all categories---------
-
-/*
-if(isset($_POST['manageCategory'])){
-  $categories = $cat->getAllCategory();
-    if($categories){
-             $i = 0;
-             while ($result = $categories->fetch_assoc()) {
-             $i++;?>
-             <tr>
-                <td><?php echo $i;?></td>
-                <td><?php echo $result['category_name']; ?></td>
-                <td><a href="#" class="btn btn-success btn-sm">Active</a></td>
-                <td>
-                    <a href="#" onclick="return confirm('Are you sure to delete')" did="<?php echo $result['catId']; ?>" class="btn btn-danger btn-sm del_cat"><i class="fa fa-trash">&nbsp;</i>Delete</a> 
-                    <a href="#" data-toggle="modal" data-target="#update_category" eid="<?php echo $result['catId']; ?>" class="btn btn-info btn-sm edit_cat"><i class="fa fa-edit">&nbsp;</i>Edit</a> 
-                </td>                                      
-            </tr>
-
-<?php
-        }
-    }
- }
- */
-
 if(isset($_POST['deleteCategory']) AND isset($_POST['id'])){
     $deleteCat = $_POST['id'];
     $delCategory = $cat->deleteCategory($deleteCat);
@@ -140,14 +106,6 @@ if(isset($_POST['updateBrand']) AND isset($_POST['id'])){
     exit();
     
 }
-// update record after getting data
-// if(isset($_POST['updt_br'])){
-//     $bId = $_POST['brId'];
-//     $brand_name = $_POST['updt_br'];
-//     $result = $br->updtBrand($brand_name,$bId);
-//     echo $result;
-//     exit();
-// }
 if(isset($_POST['deleteProduct']) AND isset($_POST['id'])){
     $delete = $_POST['id'];
     $delPro = $pr->deleteProduct($delete);    
@@ -180,10 +138,9 @@ if(isset($_POST['updt_pr'])){
 }
 //------Order Processing-------------- // 
 // GOLEZ LLOYD NEED TO ADD SEARCH FUNCTIONALITY HERE SIR OR ELSE.... //
-// FEB 09, 2022 DEBUGGING: NEW PROBLEM UNLOCKED CHANGE OPTION TO TEXT SEARCH SHEESH
+// SOLVED: FEB 09, 2022 DEBUGGING: NEW PROBLEM UNLOCKED CHANGE OPTION TO TEXT SEARCH SHEESH
 if(isset($_POST['getNewOrderForm'])){
    $result = $pr->getAllActiveProduct();
-
    ?>
 
    <tr>   

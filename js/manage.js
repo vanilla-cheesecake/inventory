@@ -197,8 +197,7 @@ $(document).ready(function(){
         $("#prId").val(data["pId"]);
         $("#added_date").val(data["date"]);
         $("#updt_pr").val(data["product_name"]);         
-        $("#select_cat").val(data["cId"]);         
-        // $("#select_brand").val(data["bId"]);    
+        $("#select_cat").val(data["cId"]);          
         $("#retail_price").val(data["retail_price"]);        
         $("#product_price").val(data["product_price"]);         
         $("#product_qty").val(data["product_stock"]);    
