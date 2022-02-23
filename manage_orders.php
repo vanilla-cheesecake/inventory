@@ -36,10 +36,10 @@ if(!isset($_SESSION['userlogin'])){
 
                          <div class="card-body">
 
-            <table class="table table-striped table-bordered table-condensed table-hover text-center" id="example">
+            <table class="table table-striped table-bordered table-condensed table-hover text-center"  id="example">
 
              <thead>
-                 <tr class="badge-info text-center">
+                 <tr class="badge-info text-center" style="background-color: rgb(0,113,122);">
                      <td><b>SL#</b></td>
                      <td><b>Order</b></td>
                      <td><b>Customer</b></td>
@@ -81,7 +81,7 @@ if(!isset($_SESSION['userlogin'])){
                  <?php }}?>
              </tbody>
              <tfoot>
-                 <tr class="badge-info text-center">
+                 <tr style="background-color: rgb(0,113,122);" class="badge-info text-center">
                      <td></td>
                      <td></td>
                      <td></td>

@@ -141,7 +141,7 @@ if(!isset($_SESSION['userlogin'])){
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Categories</h5>
+                            <h5 class="card-title">ITEM CATEGORIES</h5>
                             <p class="card-text">Here you can manage your categories and add new categories</p>
                             <a href="#" data-toggle="modal" data-target="#form_category" class="btn btn-outline-primary">Add</a>
                             <a href="manage_categories.php" class="btn btn-outline-success">Manage</a>
@@ -151,7 +151,7 @@ if(!isset($_SESSION['userlogin'])){
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Brands</h5>
+                            <h5 class="card-title">REPLENISH STOCKS</h5>
                             <p class="card-text">Here you can manage your brands and add new brands</p>
                             <a href="#" data-toggle="modal" data-target="#form_brand" class="btn btn-outline-primary">Add</a>
                             <a href="manage_brands.php" class="btn btn-outline-success">Manage</a>
@@ -169,8 +169,10 @@ if(!isset($_SESSION['userlogin'])){
                     </div>
                 </div>
             </div>
+            <br>
+
         </div>
-         
+        <br><br>
          <?php
          // form_category
          include_once ("templates/category.php");?>

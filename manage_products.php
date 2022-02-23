@@ -25,7 +25,7 @@ if(isset($_GET['delpr'])){
     // form_product
     include_once ("templates/product.php");?>
     
-?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -120,7 +120,6 @@ if(isset($_GET['delpr'])){
                      <td></td>
                      <td></td>
                      <td></td>   
-                     
                      <td></td>
                      <td></td>
                      <td></td>
