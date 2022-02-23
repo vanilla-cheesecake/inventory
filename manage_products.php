@@ -120,7 +120,6 @@ if(isset($_GET['delpr'])){
                      <td></td>
                      <td></td>
                      <td></td>   
-                     
                      <td></td>
                      <td></td>
                      <td></td>
