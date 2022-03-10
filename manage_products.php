@@ -37,12 +37,36 @@ if(isset($_GET['delpr'])){
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">       
+        <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">       
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-     
+      -->
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+      
+
         <script src="js/manage.js"></script>
         <script src="js/main.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
      </head>
      <body>
          <?php include_once("templates/header.php");?>
@@ -58,6 +82,8 @@ if(isset($_GET['delpr'])){
                          <h3 class="text-center" style="font-family: Consolas">Products Records</h3>
         
                          <div class="card-body">
+                    
+                         <a href="manage_categories.php" class="btn btn-outline-success">Manage Categories</a>
                          <a href="#" data-toggle="modal" data-target="#form_product" class="btn btn-outline-primary">Add New Product</a>
                          <br><br>
                              <?php
@@ -66,19 +92,21 @@ if(isset($_GET['delpr'])){
                                  echo $delCategory;
                              } */
                              ?>
+                           
             <table class="table table-striped table-bordered table-condensed table-hover text-center" id="example">
              <thead>
+                 
                  <tr style="background-color: rgb(0,113,122);" class="badge-info text-center">
-                     <td><b>Item #</b></td>
-                     <td><b>Product</b></td>
-                     <td><b>Category</b></td>
-                     <td><b>Retail Price</b></td>
-                     <td><b>SRP</b></td>
-                     <td><b>Quantity</b></td>  
-                     <td><b>Date</b></td>
+                     <th><b>Item #</b></th>
+                     <th><b>Product</b></th>
+                     <th><b>Category</b></th>
+                     <th><b>Retail Price</b></th>
+                     <th><b>SRP</b></th>
+                     <th><b>Quantity</b></th>  
+                     <th><b>Date</b></th>
               <!--  <td><b>Category</b></td>     -->                 
-                     <td><b>Status</b></td>
-                     <td><b>Action</b></td>
+                     <th><b>Status</b></th>
+                     <th><b>Action</b></th>
                  </tr>
              </thead>
              <tbody>
@@ -156,11 +184,42 @@ if(isset($_GET['delpr'])){
          </script>
          
          <?php include_once("templates/update_product.php")?>
-          <script>
+          <!-- <script>
            $(document).ready(function(){
                  $('#example').DataTable();
            });
-          </script>
+          </script> -->
+
+  
+                
+        <script>
+            $(document).ready(function() {
+                $('#example').DataTable( {
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'copyHtml5',
+                            exportOptions: {
+                                columns: [ 0, ':visible' ]
+                            }
+                        },
+                        {
+                            extend: 'excelHtml5',
+                            exportOptions: {
+                                columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+                            }
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            exportOptions: {
+                                columns: [ 0, 1, 2, 5 ]
+                            }
+                        },
+                        'colvis'
+                    ]
+                } );
+            } );
+        </script>
    
      </body>
 </html>

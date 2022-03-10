@@ -6,6 +6,7 @@ if(!isset($_SESSION['userlogin'])){
     include_once ("classes/Category.php");
     $cat = new Category();
     $categories = $cat->getAllCategory();
+    include_once ("templates/category.php");
  /*   
 if(isset($_GET['delcat'])){
     // category delete from category tbl
@@ -31,6 +32,7 @@ if(isset($_GET['delcat'])){
         <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"/></script>
      
         <script src="js/manage.js"></script>
+        <script src="js/main.js"></script>
 
      </head>
      <body>
@@ -41,7 +43,7 @@ if(isset($_GET['delcat'])){
                  <div class="col-md-12">
                      <div class="card" style="background-color: whitesmoke;">
                          <h3 class="text-center" style="font-family: cursive">All Categories</h3>
-
+                        <br><br>
                          <div class="card-body">
                              <?php
                              /* as we use page refresh,dont need the msg
@@ -49,8 +51,9 @@ if(isset($_GET['delcat'])){
                                  echo $delCategory;
                              } */
                              ?>
+                             <a href="#" data-toggle="modal" data-target="#form_category" class="btn btn-outline-primary">Add Category</a>
             <table class="table table-striped table-bordered table-condensed table-hover text-center" id="example">
-
+            <br><br>
              <thead>
                  <tr class="badge-info text-center">
                      <td><b>SL#</b></td>

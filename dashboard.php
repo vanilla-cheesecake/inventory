@@ -28,7 +28,8 @@ if(!isset($_SESSION['userlogin'])){
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         
-        <script src="js/main.js"></script>
+      
+
      </head>
      <body>
          <?php include_once("templates/header.php");?>
@@ -138,7 +139,7 @@ if(!isset($_SESSION['userlogin'])){
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">ITEM CATEGORIES</h5>
@@ -147,8 +148,8 @@ if(!isset($_SESSION['userlogin'])){
                             <a href="manage_categories.php" class="btn btn-outline-success">Manage</a>
                         </div>
                     </div> 
-                </div>
-                <div class="col-md-4">
+                </div> -->
+                <!-- <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">REPLENISH STOCKS</h5>
@@ -157,7 +158,7 @@ if(!isset($_SESSION['userlogin'])){
                             <a href="manage_brands.php" class="btn btn-outline-success">Manage</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
@@ -169,10 +170,16 @@ if(!isset($_SESSION['userlogin'])){
                     </div>
                 </div>
             </div>
+<<<<<<< Updated upstream
             <br>
 
         </div>
         <br><br>
+=======
+            <br><br>
+        </div>
+        <br>
+>>>>>>> Stashed changes
          <?php
          // form_category
          include_once ("templates/category.php");?>
