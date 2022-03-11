@@ -170,16 +170,9 @@ if(!isset($_SESSION['userlogin'])){
                     </div>
                 </div>
             </div>
-<<<<<<< Updated upstream
-            <br>
-
-        </div>
-        <br><br>
-=======
             <br><br>
         </div>
         <br>
->>>>>>> Stashed changes
          <?php
          // form_category
          include_once ("templates/category.php");?>
