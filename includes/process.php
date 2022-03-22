@@ -76,15 +76,17 @@ if(isset($_POST['manageBrand'])){
              $i = 0;
              while ($result = $brands->fetch_assoc()) {
              $i++;?>
-            <tr>
-                <td><?php echo $i;?></td>
-                <td><?php echo $result['brand_name']; ?></td>
-                <td><a href="#" class="btn btn-success btn-sm">Active</a></td>
-                <td>
-                    <a onclick="return confirm('Are you sure to delete')" href="?delbr=<?php echo $result['bId']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash">&nbsp;</i>Delete</a> 
-                    <a href="#" data-toggle="modal" data-target="#update_brand" eid="<?php echo $result['bId']; ?>" class="btn btn-info btn-sm edit_br"><i class="fa fa-edit">&nbsp;</i>Edit</a> 
-                </td>                                      
-            </tr>
+<tr>
+    <td><?php echo $i;?></td>
+    <td><?php echo $result['brand_name']; ?></td>
+    <td><a href="#" class="btn btn-success btn-sm">Active</a></td>
+    <td>
+        <a onclick="return confirm('Are you sure to delete')" href="?delbr=<?php echo $result['bId']; ?>"
+            class="btn btn-danger btn-sm"><i class="fa fa-trash">&nbsp;</i>Delete</a>
+        <a href="#" data-toggle="modal" data-target="#update_brand" eid="<?php echo $result['bId']; ?>"
+            class="btn btn-info btn-sm edit_br"><i class="fa fa-edit">&nbsp;</i>Edit</a>
+    </td>
+</tr>
 
 <?php
         }
@@ -143,31 +145,31 @@ if(isset($_POST['getNewOrderForm'])){
    $result = $pr->getAllActiveProduct();
    ?>
 
-   <tr>   
-   <td>
-   <input id="items" name="pId[]" required="" list="pId[]" class="form-control form-control-sm pId" />
+<tr>
+    <td>
+        <input id="items" name="pId[]" required="" list="pId[]" class="form-control form-control-sm pId" />
         <datalist id="pId[]">
             <?php 
                 if($result){
                         while($rows = mysqli_fetch_assoc($result)) { ?>
-                            <option value='<?php echo  $rows['pId'];?>'><?php echo $rows['product_name']; ?></option>
-             <?php }} ?>
-          
+            <option value='<?php echo  $rows['pId'];?>'><?php echo $rows['product_name']; ?></option>
+            <?php }} ?>
+
         </datalist>
-    </input>
-    </td> 
-        
-       <td><b class="number">1</b></td>
-            <td><input type="text" name="pro_name[]" readonly="" class="form-control form-control-sm pro_name"/></td>    
-            <td><input type="text" name="tqty[]" readonly="" class="form-control form-control-sm tqty" required=""/></td>    
-            <td><input type="text" name="qty[]" class="form-control form-control-sm qty" required=""/></td>    
-            <td><input type="text" name="price[]" readonly="" class="form-control form-control-sm price" required=""/>   
-           
-            <td>₱<span class="amt">0</span></td>
-        <br>
-        
-  </tr> 
-   <?php 
+        </input>
+    </td>
+
+    <td><b class="number">1</b></td>
+    <td><input type="text" name="pro_name[]" readonly="" class="form-control form-control-sm pro_name" /></td>
+    <td><input type="text" name="tqty[]" readonly="" class="form-control form-control-sm tqty" required="" /></td>
+    <td><input type="text" name="qty[]" class="form-control form-control-sm qty" required="" /></td>
+    <td><input type="text" name="price[]" readonly="" class="form-control form-control-sm price" required="" />
+
+    <td>₱<span class="amt">0</span></td>
+    <br>
+
+</tr>
+<?php 
    exit();
 }
 // Get price and quantity of one item

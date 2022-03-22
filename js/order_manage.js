@@ -81,7 +81,7 @@ $(document).ready(function(){
 
         
    $("#order_form_update").click(function(){
-       var invoice = $("#get_ordered_update_data").serialize();    
+    //    var invoice = $("#get_ordered_update_data").serialize();    
            $.ajax({
            url: "includes/process_order_update.php",
         method: "POST",

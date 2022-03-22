@@ -146,8 +146,7 @@ class User{
              $query = "UPDATE users
                        SET    
                        uName   = '$uName'
-
-                       WHERE $uId  = '$id'";
+                       WHERE uId  = '$id'";
 
             $userupdate = $this->db->update($query);
             if ($userupdate) {
