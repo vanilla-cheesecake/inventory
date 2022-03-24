@@ -8,6 +8,8 @@
         var pass2 = $("#password2");
         var type  = $("#uType");
        
+        var e_patt = new RegExp(/^[A-Za_z0-9_-]+(\.[A-Za-z0-9_-]*@[a_z0-9_-])+(\.[a-z0-9_-]+)*(\.[a-z]{2,4})$/);
+
         if(name.val()=="" || name.val().length<4){
             name.addClass("border-danger");
             $("#u_error").html("<span class='text-danger'>Please Enter Name and Name should be more than 4 char</span>");

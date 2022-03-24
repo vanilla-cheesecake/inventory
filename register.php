@@ -66,7 +66,7 @@ if($_SERVER["REQUEST_METHOD"]== 'POST' && isset($_POST['user_register'])){
                             <select name="uType" class="form-control" id="uType" required="">
                                 <option value="">Choose User Type</option>
                                 <option value="Admin">Admin</option>
-                                <option value="Other">Other</option>
+                                <option value="Other">Cashier</option>
                             </select>
                         <small id="t_error" class="form-text text-muted"></small>
   

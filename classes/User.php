@@ -60,7 +60,7 @@ class User{
             return $msg;
         }else{
             $password = md5($uconfirmPassword);              
-            date_default_timezone_set('Asia/Manila');
+            date_default_timezone_set('Asia/Dhaka');
             $register_date = date('y-m-d');
             $last_login = date('y-m-d').' '.date('h:i:sa');
             $status=1;
@@ -84,43 +84,47 @@ class User{
         $uPassword = mysqli_real_escape_string($this->db->link, $data['password']);
         $password = md5($uPassword);
         
-        $query = "SELECT * FROM users WHERE uEmail = '$uEmail' AND uPassword = '$password'";
+        $query = "SELECT * FROM users WHERE uEmail = '$uEmail' OR uPassword = '$password'";
         $checkUser = $this->db->select($query);
         if($checkUser){
-            $mailquery = "SELECT * FROM users WHERE uEmail = '$uEmail'";
-            $checkMail = $this->db->select($mailquery);
-                if($checkMail){
-                    $passquery = "SELECT * FROM users WHERE uPassword = '$password'";
-                    $result = $this->db->select($passquery);
-                    
-                    if($result){
-                        $value = $result->fetch_assoc();
-                        $uId = $value['uId'];
-                        $_SESSION['userlogin']=TRUE;
-                        
-                        $_SESSION['uId']        = $value['uId'];
-                        $_SESSION['uName']      = $value['uName'];
-                        $_SESSION['uType']      = $value['uType'];
-                        $_SESSION['last_login'] = $value['last_login'];
-                        $_SESSION['uPassword']  = $value['uPassword'];
-                        
-                        date_default_timezone_set('Asia/Manila');
-                        $last_login = date('y-m-d').' '.date('h:i:sa');
+        $mailquery = "SELECT * FROM users WHERE uEmail = '$uEmail'";
+        $checkMail = $this->db->select($mailquery);
+        if($checkMail){
+             $passquery = "SELECT * FROM users WHERE uPassword = '$password'";
+             $result = $this->db->select($passquery);
+             
+             if($result){
+                 $value = $result->fetch_assoc();
+                 $uId = $value['uId'];
+                 $_SESSION['userlogin']=TRUE;
+                 
+                 $_SESSION['uId']        = $value['uId'];
+                 $_SESSION['uName']      = $value['uName'];
+                 $_SESSION['uType']      = $value['uType'];
+                 $_SESSION['last_login'] = $value['last_login'];
+                 $_SESSION['uPassword']  = $value['uPassword'];
+                 
+                 date_default_timezone_set('Asia/Dhaka');
+                 $last_login = date('y-m-d').' '.date('h:i:sa');
 
-                        $query = "UPDATE users SET last_login = '$last_login' WHERE $uId = '$uId'";
+                 $query = "UPDATE users
+                          SET    
+                          last_login    = '$last_login'
+                              
+                          WHERE uId  = '$uId'";
 
-                        $loginUpdate = $this->db->update($query);
-                        header('Location: dashboard.php');
-                        
-                        }else{
-                        $msg = "<span style = 'color:red;font-weight:bold'>Password not matched!!</span>";
-                        return $msg;
-                        }
-                    
-                    }else{
-                    $msg = "<span style = 'color:red;font-weight:bold'>Email not matched!!</span>";
-                    return $msg;
-                    }
+                 $loginUpdate = $this->db->update($query);
+                 header('Location: dashboard.php');
+                 
+                 }else{
+                   $msg = "<span style = 'color:red;font-weight:bold'>Password not matched!!</span>";
+                   return $msg;
+                  }
+            
+             }else{
+             $msg = "<span style = 'color:red;font-weight:bold'>Email not matched!!</span>";
+             return $msg;
+            }
         }else{
            $msg = "<span style = 'color:red;font-weight:bold'>Sorry,You are not registered!!</span>";
            return $msg; 
@@ -151,12 +155,12 @@ class User{
             $userupdate = $this->db->update($query);
             if ($userupdate) {
                 header("Location: setting.php");
-                //$msg = "<span style='color:green;font-weight:bold'>User Updated successfully</span>";
-                //return $msg;
+                $msg = "<span style='color:green;font-weight:bold'>User Updated successfully</span>";
+                return $msg;
             } else {
                 echo "<script>alert(Something Wrong)</script>";
-                //$msg = "<span style='color:red;font-weight:bold'>Update has been failed</span>";
-                //return $msg;
+                $msg = "<span style='color:red;font-weight:bold'>Update has been failed</span>";
+                return $msg;
             }
         }
 

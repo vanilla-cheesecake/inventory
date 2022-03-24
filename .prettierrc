@@ -1,0 +1,8 @@
+{
+  "overrides": [
+    {
+      "files": "*.myowncss",
+      "options": { "parser": "css" }
+    }
+  ]
+}

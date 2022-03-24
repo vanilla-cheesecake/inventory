@@ -267,6 +267,12 @@ class Product {
        $result = $this->db->select($query);
        return $result;        
    }
+   // GET SALES REPORT
+   public function getSales(){
+    $query = "SELECT * FROM invoice_details INNER JOIN invoice ON invoice_details.invoice_no = invoice.invoice_no";
+    $result = $this->db->select($query);
+    return $result;        
+}
    // UPDATE ORDER RECEIPT SOMETHING SOMETHING
    public function UpdateOrderInvoice($invoice,$order_date,$cust_name,$ar_tqty,$ar_qty,$ar_price,$ar_pro_name,$ar_pro_id,$sub_total,$gst,$discount,$net_total,$paid,$due,$payment_type){    
        if($cust_name==""||$paid==""||$payment_type==""){

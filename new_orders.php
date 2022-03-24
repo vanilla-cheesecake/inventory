@@ -42,7 +42,7 @@ if(!isset($_SESSION['userlogin'])){
                                          <div class="form-group row">
                                              <label class="col-sm-3" align="right">Order Date</label>
                                              <div class="col-sm-6">
-                                                 <input type="text" id="order_date" name="order_date" readonly="" class="form-control form-control-sm" value="<?php echo date("Y-m-d"); ?>" required=""/>
+                                                 <input type="text" id="order_date" name="order_date" readonly="" class="form-control form-control-sm" value="<?php echo date("Y/m/d"); ?>" required=""/>
                                              </div>
                                          </div>
                                          <div class="form-group row">

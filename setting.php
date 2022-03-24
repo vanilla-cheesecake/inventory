@@ -1,3 +1,5 @@
+
+  
 <?php
 session_start();
 if(!isset($_SESSION['userlogin'])){
@@ -8,11 +10,11 @@ if(!isset($_SESSION['userlogin'])){
     $id = $_SESSION['userlogin']; // id of individual user
     $getUserData = $user->userData($id);
     
-    if(isset($_POST['updt_profile'])){
-     $uName = $_POST['uName'];   
-     $updateUser = $user->userUpdate($uName,$id); /// belong to the user class
-     
-    }   
+        if(isset($_POST['updt_profile'])){
+        $uName = $_POST['uName'];   
+        $updateUser = $user->userUpdate($uName,$id); /// belong to the user class
+        
+        }   
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,11 +41,12 @@ if(!isset($_SESSION['userlogin'])){
                                  <h4>Setting</h4>
                              </div>
                              <div class="card-body">
-                                 <h6>Change UserName</h6><hr>
+                                 <h6>Change Username</h6><hr>
                                 
                                  <form autocomplete="off" action="" method="post">                                         
                                       <?php
                                       if($getUserData){
+                                          
                                           while($result=$getUserData->fetch_assoc()){
                                       ?>
                                          <div class="form-group row">                                             
@@ -129,6 +132,3 @@ if(!isset($_SESSION['userlogin'])){
     </body>
 </html>
 <?php }?>
-
-
-

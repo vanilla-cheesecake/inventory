@@ -40,6 +40,3 @@ if(!isset($_SESSION['userlogin'])){
     </body>
 </html>
 <?php }?>
-
-
-
